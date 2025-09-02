@@ -1,59 +1,82 @@
-let nameField=document.getElementById("namefield");
-let countField=document.getElementById("countfield");
-let priceField=document.getElementById("pricefield");
-let AddButton=document.getElementById("addBtn");
-let sumLabel=document.getElementById("sumLbl");
-let itemsList=document.getElementById("itemsList");
-let items=[];
-AddButton.addEventListener('click',() => {if(nameField.value=='' || priceField.value==0  || countField.value==0)
-    {window.alert("nem adtal meg minden adatot");
-        return;
-        
+let name = document.getElementById('tName')
+let price = document.getElementById('tPrice')
+let count = document.getElementById('tDB')
+let addBTN = document.getElementById('addButton')
+
+let list = document.getElementById('itemList')
+let sum = document.getElementById('summaryLBL')
+let sumCount =0
+
+let Items = []
+
+addBTN.addEventListener('click', () =>{
+    if (name.value == '' || price.value == 0 || count.value == 0) {
+        alert("Nem adtál meg semmit")
+        return
     }
-    items.push({name:nameField.value,
-                price:priceField.value,
-                count:countField.value,
-                sum:priceField.value*countField.value
-    });
-    RefreshTable();
-    clearForm();
 
-});
+    Items.push({
+        Tname: name.value,
+        Tprice: price.value,
+        Tcount: count.value,
+        Tsum: price.value*count.value
+    })
 
-function RefreshTable()
-{
-    itemsList.innerHTML='';
-    let tr=document.createElement("tr");
-let td1=document.createElement("td");
-let td2=document.createElement("td");
-let td3=document.createElement("td");
-let td4=document.createElement("td");
-let td5=document.createElement("td");
+    list.innerHTML = ''
+    sumCount = 0
 
-td1.innerHTML=i+1+'.';
-td2.innerHTML=items[i].name;
-td3.innerHTML=items[i].price;
-td4.innerHTML=items[i].count;
-td5.innerHTML=items[i].sum+" Ft";
+    refreshTable()
+    
+    sum.innerHTML = sumCount
+})
 
-td3.classList.add('text-end')
-td4.classList.add('text-end')
-td5.classList.add('text-end')
-tr.appendChild(td1);
-tr.appendChild(td2);
-tr.appendChild(td3);
-tr.appendChild(td4);
-tr.appendChild(td5);
-itemsList.appendChild(tr);
+
+function refreshTable() {
+    for (let i = 0; i < Items.length; i++) {
+        let tr = document.createElement('tr')
+        let td1 = document.createElement('td')
+        let td2 = document.createElement('td')
+        let td3 = document.createElement('td')
+        let td4 = document.createElement('td')
+        let td5 = document.createElement('td')
+    
+        td1.innerHTML = i+1+'.'
+        td2.innerHTML = Items[i].Tname
+        td3.innerHTML = Items[i].Tprice
+        td4.innerHTML = Items[i].Tcount
+        td5.innerHTML = Items[i].Tsum
+
+        td3.classList.add('text-end')
+        td4.classList.add('text-end')
+        td5.classList.add('text-end')
+
+    
+    
+        tr.appendChild(td1)
+        tr.appendChild(td2)
+        tr.appendChild(td3)
+        tr.appendChild(td4)
+        tr.appendChild(td5)
+    
+        list.appendChild(tr)
+
+        sumCount += Items[i].Tsum
+
+    }
+
 }
 
-function clearForm(){
-    nameField="";
-    countField=0;
-    priceField=0;
+function save() {
+    localStorage.setItem('bevLista, ')
 }
 
-function save(){}
-function load(){localStorage.setItem('bevLista',items.toString())}
-load();
-clearForm();
+function clearForm() {
+    name.value = ''
+    price.value = 0
+    count.value = 0
+
+    list.innerHTML = ''
+}
+
+
+//lehessen savelni (load meghivni)
