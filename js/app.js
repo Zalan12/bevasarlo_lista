@@ -7,14 +7,14 @@ let list = document.getElementById('itemList')
 let sum = document.getElementById('summaryLBL')
 let sumCount =0
 
-let Items = []
-
+let Items = [];
+let koraTerm=[];
 addBTN.addEventListener('click', () =>{
     if (name.value == '' || price.value == 0 || count.value == 0) {
         alert("Nem adtál meg semmit")
         return
     }
-
+    
     Items.push({
         Tname: name.value,
         Tprice: price.value,
@@ -27,7 +27,10 @@ addBTN.addEventListener('click', () =>{
 
     refreshTable()
     
-    sum.innerHTML = sumCount
+    sum.innerHTML = sumCount;
+    save();
+    korTerm()
+    
 })
 
 
@@ -39,16 +42,23 @@ function refreshTable() {
         let td3 = document.createElement('td')
         let td4 = document.createElement('td')
         let td5 = document.createElement('td')
+        let td6=document.createElement('td');
+        let btn=document.createElement('button')
     
         td1.innerHTML = i+1+'.'
         td2.innerHTML = Items[i].Tname
         td3.innerHTML = Items[i].Tprice
         td4.innerHTML = Items[i].Tcount
         td5.innerHTML = Items[i].Tsum
+        btn.innerHTML='X';
 
         td3.classList.add('text-end')
         td4.classList.add('text-end')
         td5.classList.add('text-end')
+        td6.classList.add('text-center')
+        btn.classList.add('btn','btn-danger','btn-sm')
+
+        btn.addEventListener('click',()=>{deleteItem(i)});
 
     
     
@@ -57,6 +67,8 @@ function refreshTable() {
         tr.appendChild(td3)
         tr.appendChild(td4)
         tr.appendChild(td5)
+        tr.appendChild(td6)
+        tr.appendChild(btn)
     
         list.appendChild(tr)
 
@@ -67,7 +79,21 @@ function refreshTable() {
 }
 
 function save() {
-    localStorage.setItem('bevLista, ')
+    localStorage.setItem('bevLista', JSON.stringify(Items))
+}
+
+function deleteItem(idx)
+{
+    
+    if(confirm('Bizti?'))
+        {
+            alert('Törlés!'+idx)
+            Items.splice(idx,1);
+            clearForm()
+            refreshTable()
+            save();
+        }
+
 }
 
 function clearForm() {
@@ -78,5 +104,24 @@ function clearForm() {
     list.innerHTML = ''
 }
 
+function load()
+{
+    if(localStorage.getItem('bevLista')){
+        Items=JSON.parse(localStorage.getItem('bevLista'));
+
+    }
+}
+
+function korTerm()
+{
+    for (let i = 0; i < Items.length; i++) {
+        
+        koraTerm.push(Items[i].Tname);
+        console.log(koraTerm);
+        
+    }
+}
+load();
+refreshTable()
 
 //lehessen savelni (load meghivni)

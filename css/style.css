@@ -1,7 +1,23 @@
 header{text-align: center;
         padding: 15px;}
 footer{text-align: center;
-padding: 10px;}
+padding: 10px;
+font-size: 120% !important;}
 footer h5{font-size: 90%;}
 footer h6{font-size: 90%;
 color: var(--bs-primary);}
+tfoot{font-size: 120% !important;}
+
+@media screen and (max-width: 768px)
+{
+ /*        .accordion-body{display: flex !important;
+                        flex-direction: column;
+                        justify-content: space-around;}
+        #tNameDiv{width: 100%;}
+        #arDiv{width: 49%;flex-direction: row;}*/
+}
+@media screen and (max-width: 768px)
+{
+
+
+}
