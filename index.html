@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--CSS-->
-    <link rel="stylesheet" href="CSS/bootstrap.min.css">
-    <link rel="stylesheet" href="CSS/mainStyle.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Bevasarlólista</title>
 </head>
 <body data-bs-theme="dark">
@@ -26,7 +26,8 @@
                   <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body" id="accBody">
                     <!--Űrlap-->
-                    <label for="exampleDataList" class="form-label">Termék neve</label>
+                    <div class="akkhol">
+                                          <label for="exampleDataList" class="form-label">Termék neve</label>
                         <input class="form-control mb-4" list="datalistOptions" id="termekLista" placeholder="Termék neve">
                         <datalist id="datalistOptions">
                           <!--options-->
@@ -38,6 +39,9 @@
                       <div class="form-floating mt-4">
                         <input type="number" class="form-control" id="tDB" min="0" placeholder="Password">
                         <label for="floatingPassword">darabszám</label>
+                    </div>
+                
+
 
                       <button type="button" class="btn btn-secondary mt-2" id="addButton">Hozzáadás</button>    
                       <button type="button" class="btn btn-danger mt-2" id="clearButton" onclick="clearForm()">Törlés</button>    

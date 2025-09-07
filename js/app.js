@@ -127,7 +127,7 @@ function deleteItem(idx) {
 }
 
 
-load()
+load();
 refreshTable()
 
 
@@ -139,6 +139,6 @@ function termekListaFetoltes() {
 
     document.getElementById('datalistOptions').innerHTML += `<option value="${ujTermek}"></option>`
     refreshTable()
+    save();
 }
-
 //selectionchange a terméknévnél (ár feltöltése)

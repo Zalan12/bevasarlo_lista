@@ -8,13 +8,13 @@ footer h6{font-size: 90%;
 color: var(--bs-primary);}
 tfoot{font-size: 120% !important;}
 
-@media screen and (max-width: 768px)
+/*@media screen and (min-width: 1000px)
 {
- /*        .accordion-body{display: flex !important;
-                        flex-direction: column;
+   .akkhol{display: flex !important;
+                        flex-direction: row;
                         justify-content: space-around;}
-        #tNameDiv{width: 100%;}
-        #arDiv{width: 49%;flex-direction: row;}*/
+        #termekLista{width: 33%;}
+        #tPrice{width: 33%;}
 }
 @media screen and (max-width: 768px)
 {
